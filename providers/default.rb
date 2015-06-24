@@ -31,8 +31,9 @@ action :install do
       Gem.clear_paths
     end
     # install only on git update
-    action :nothing
-    only_if { ::File.exist?(gemspec_file) }
+    # action :nothing
+    action :run
+    only_if { ::File.exist?(gemspec_file) && !already_installed? }
   end
 end
 
